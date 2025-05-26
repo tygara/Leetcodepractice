@@ -14,7 +14,7 @@
 
 // Space Complexity:
 // Time Complexity:
-const intersect = (nums1, nums2) => {
+const iintersect = (nums1, nums2) => {
   const countMap = new Map();
   // Ensures largerArray always references array with greater or equal length 
   const largerArray = nums1.length >= nums2.length ? nums1 : nums2; 
@@ -36,6 +36,26 @@ const intersect = (nums1, nums2) => {
     }
   }
   return result;
+};
+
+const intersect = (nums1, nums2) => {
+  const countMap = new Map();
+
+  const largerArray = nums1.length >= nums2.length ? nums1 : nums2;
+  const smallerArray = nums1.length < nums2.length ? nums1 : nums2;
+  const results = [];
+
+  for(const num of smallerArray) {
+    countMap.set(num, countMap.get(num || 0) + 1);
+  }
+
+  for(const num of largerArray) {
+    if(countMap.get(num) > 0) {
+      results.push(num);
+      countMap.set(num, countMap.get(num) - 1)
+    }
+  }
+  return results;
 };
 
 let nums1 = [4,9,5] 

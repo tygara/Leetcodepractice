@@ -26,26 +26,49 @@
 */
 
 // With built ins
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+//
+// num = 0 * 10 + 4 = 4
+// num = 4 * 10 + 3 = 43
+// num = 43 * 10 + 2 = 432
+// num = 432 * 10 + 1 = 4321
+
+// numPlusOne = 4321 + 1 = 4322
+
+/*
+  This function fails for very large input arrays, because num becomes larger than JS safe integer limit
+  (Number.MAX_SAFE_INTEGER = 9, 007, 199, 254, 740, 991), leading to loss of precision.
+
+  You need to avoid converting the entire array into a number. Instead, process the array from right 
+  to left, handling 'carry' manually.
+*/
+
+const plusOne = (digits) => {
+  let num = 0;
+  let numPlusOne = 0; 
+  for(const digit of digits) {
+    // This build the full number by shifting digits left and adding the current digit.
+    num = num * 10 + digit
+  }
+  // Once the loop is done, the number that we are too +1 is held in this variable
+  numPlusOne = num + 1;
+  // Convert numPlusOne (a number) to a string -> split into individual characters (array of strings)
+  // -> then map each character back to a number to get an array digits.
+  numPlusOne = String(numPlusOne).split('').map(Number);
+  return numPlusOne
+};
+// [4,3,2,1]
+
+
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
 // const plusOne = (digits) => {
-//   let num = 0;
-//   let numPlusOne = 0; 
-//   for(const digit of digits) {
-//     num = num * 10 + digit
-//   }
-//   numPlusOne = num + 1;
-//   numPlusOne = String(numPlusOne).split('').map(Number);
-//   return numPlusOne
-// };
-
-
-// Time Complexity: O(n)
-// Space Complexity: O(n)
-
-// const plusOnee = (digits) => {
+//   // Converts each ele in array to a str & Concats them into a single string
 //   let num = digits.join('');
+//   // Convert num str to number, add 1, split back into array of digits & turn eles into a number
 //   let numPlusOne = String(Number(num) + 1).split('').map(Number);
 //   return numPlusOne
 // };
@@ -76,7 +99,6 @@
 //   return final
 // };
 
-
 const plusOne = (digits) => {
   for(let i = digits.length - 1; i >= 0; i--) {
     if(digits[i] < 9) {
@@ -85,12 +107,14 @@ const plusOne = (digits) => {
     }
     digits[i] = 0;
   }
+  // This line is only reached on the first number is 9, and needs to return 1,0
   return [1,...digits];
 };
 
+// [4,3,2,9] - [4,3,2,0] - [4,3,3,0]
 let digitOne = [4,3,2,1];
 console.log(plusOne(digitOne), '- [4,3,2,2]')
 
-// let digitTwo = [9];
-// console.log(plusOne(digitTwo))
+let digitTwo = [9];
+console.log(plusOne(digitTwo), '- [1,0]')
 

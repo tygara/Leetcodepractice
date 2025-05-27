@@ -111,6 +111,17 @@ const plusOne = (digits) => {
   return [1,...digits];
 };
 
+const pluseOne = (digits) => {
+  for(let i = digits.length - 1; i >= 0; i++) {
+    if(digits[i] < 9) {
+      digits[i] += 1
+      return digits
+    }
+    digits[i] = 0
+  }
+  return [1,...digits];
+}
+
 // [4,3,2,9] - [4,3,2,0] - [4,3,3,0]
 let digitOne = [4,3,2,1];
 console.log(plusOne(digitOne), '- [4,3,2,2]')

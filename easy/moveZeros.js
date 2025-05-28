@@ -28,6 +28,9 @@
     write pointer is when we place the current nums[readPointer] !== 0 at nums[writePointer]
     This means that the funciton only moves the writePointer after a !==0 element has just been 
     placed.
+    
+    Time Complexity: O(n)
+    Space Complexity: O(1)
 
 */
 const moveZeros = (nums) => {

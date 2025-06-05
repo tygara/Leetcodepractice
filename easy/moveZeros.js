@@ -34,18 +34,18 @@
 
 */
 const moveZeros = (nums) => {
-  let insertPos = 0;
+  let write = 0;
 
-  for(let i = 0; i < nums.length; i++) {
-    if(nums[i] !== 0) {
-      nums[insertPos] = nums[i];
-      insertPos++;
+  for(let read = 0; read < nums.length; read++) {
+    if(nums[read] !== 0) {
+      nums[write] = nums[read];
+      write++;
     }
   }
 
-  while(insertPos < nums.length) {
-    nums[insertPos] = 0;
-    insertPos++;
+  while(write < nums.length) {
+    nums[write] = 0;
+    write++;
   }
 
   return nums;

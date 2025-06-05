@@ -20,22 +20,50 @@
     Output: [0,1]
 */
 
+// const twoSum = (nums, target) => {
+//   const map = {};
+//
+//   for(let i = 0; i < nums.length; i++) {
+//
+//     const complement = target - nums[i];
+//
+//     if(map.hasOwnProperty(complement)) {
+//       return [map[complement], i];
+//     }
+//
+//     map[nums[i]] = i
+//   }
+  // If map != have complement, set nums[i] as VALUE and index as KEY. If any further complements
+  // equal KEYS in the map then we know the indices of these two values are the answers to this 
+  // question, and since we have them in a hashmap ((VALUE of the KEY is the index of the KEY)) 
+  // We return that complement which will return the index, and we return i which is the index of 
+  // the second element that is used to achieve target.
+// };
+
+
 const twoSum = (nums, target) => {
-  const map = {};
+  const map = {}; 
 
-  for(let i = 0; i < nums.length; i++) {
+  for(index = 0; index < nums.length; index++) {
 
-    const complement = target - nums[i];
+    const complement = target - nums[index];
 
     if(map.hasOwnProperty(complement)) {
-      return map[complement, i];
+      return [map[complement], index]
     }
-
+    map[nums[index]] = index
   }
-  // Since map != have complement, set nums[i] as value and index as key. If Any further complements
-  // equal keys in the map then we know those two values are the answers to this question, and
-  // since we have them in a hashmap the value for the key is the index of they key. We return
-  // that complement which will return the index, and we return i which is the index of the 
-  // second element that is used to achieve target.
-  map[nums[i]] = i
-};
+}
+
+let nums1 = [2,7,11,15];
+let target1 = 9
+
+let nums2 = [3,2,4];
+let target2 = 6
+
+let nums3 = [3,3];
+let target3 = 6
+
+console.log(twoSum(nums1, target1), '[0,1]');
+console.log(twoSum(nums2, target2), '[1,2]');
+console.log(twoSum(nums3, target3), '[0,1]')

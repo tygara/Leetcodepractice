@@ -76,6 +76,22 @@ const boxIndex = Math.floor(row / 3)  * 3 + Math.floor(col / 3);
 //   return true;
 // };
 
+// Init a new set 
+// Init a row loop
+// Init a col loop
+// Init value to store board[row][col]
+// Init rowKey to row-value
+// Init colKey to col-value
+// Check to see if seen has
+// - rowKey | colKey | boxKey
+// - if any of these are true we return false
+// - This means that we have duplicates and 
+// if none are true we want to
+// - add.(rowKey)
+// - add.(colKey)
+// - add.(boxKey)
+// close with return statement true meaning we have reached the end of the 9x9 square
+
 const valid = (board) => {
   const seen = new Set();
 
@@ -134,4 +150,5 @@ const board1 =
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
 
-console.log(valid(board1), 'false')
+
+console.log(valid(board1));
